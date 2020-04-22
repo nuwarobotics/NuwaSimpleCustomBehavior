@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ActivityList>
+    <Label name="welcome.WelcomeSentenceActivity">Welcome Sentence</Label>
+    <Label name="behavior.CustomBehaviorActivity">Custom Behavior</Label>
+</ActivityList>
