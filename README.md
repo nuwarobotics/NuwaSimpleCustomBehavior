@@ -4,6 +4,10 @@ This is a simple example to present how to use BaseBehaviorService
 Nuwa CustomBehavior allow developer receive notify from NLP result.
  * Target SDK : `2.0.0.06`
 
+There are two simple example
+* Example 1. How to setup Welcome Sentence
+* Example 2. Receive notify which setup on TrainingKit, implement simple response
+
 # `Nuwa Website`
 * NuwaRobotics Website (https://www.nuwarobotics.com/)
 * NuwaRobotics Developer Website (https://dss.nuwarobotics.com/)
