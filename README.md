@@ -70,12 +70,14 @@ There are two functions need to be implemented which onInitialize() and createCu
 * setWelcomeSentence(String[] sentences)
 	+ To set welcome sentence when robot detected someone. 
 
-
 * resetWelcomeSentence()
 	+ To reset welcome sentence.
 
 * completeCustomBehavior()
 	+ To notify robot behavior system that the process has been completed.
+
+* requestBehaviorFocus(onBehaviorFocusChangeListener)
+        + To request Kebbi stop whole pet behavior.  (3rd could customize thair own pet behavior)
 
 
 ## class CustomBehavior
@@ -110,6 +112,26 @@ public class CustomBehaviorImpl extends BaseBehaviorService {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
+        // Example of disable Kebbi behavior START {{
+        onBehaviorFocusChangeListener = new OnBehaviorFocusChangeListener.Stub() {
+            @Override
+            public void onBehaviorFocusChange(int i) throws RemoteException {
+                if (i == SystemBehaviorManager.BEHAVIOR_FOCUS_GAIN) {
+                    Log.i("BehaviorFocus", "BEHAVIOR_FOCUS_GAIN - Kebbi pet behavior will not response");
+                } else {
+                    Log.i("BehaviorFocus", "BEHAVIOR_FOCUS_LOSS - will resume Kebbi pet behavior");
+                }
+            }
+        };
+
+        try {
+            mSystemBehaviorManager.requestBehaviorFocus(onBehaviorFocusChangeListener);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        // Example of disable Kebbi behavior END }}
+
     }
 
     @Override
